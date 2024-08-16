@@ -275,6 +275,15 @@ Ansible Playbook 登録
    :width: 1200px
    :alt: ansible-playbook登録
 
+.. list-table:: Ansible Playbook 情報の登録
+  :widths: 10 10
+  :header-rows: 1
+
+  * - Playbook素材名
+    - Playbook素材
+  * - :kbd:`package`
+    - :file:`package.yml`
+
 Movement と Ansible Playbook の紐付け
 -------------------------------------
 
