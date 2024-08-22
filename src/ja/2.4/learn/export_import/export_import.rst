@@ -510,10 +510,14 @@ Excel一括インポートの確認
    :width: 1200px
    :alt: Excel一括インポート確認
 
+.. figure:: /images/learn/quickstart/export_import/Excel一括インポート確認2.png
+   :width: 1200px
+   :alt: Excel一括インポート確認
+
 | 次に、ファイルを編集して登録した内容を確認します。
 | :menuselection:`基本コンソール --> オペレーション一覧 --> フィルタ` から登録したオペレーションが追加されていることを確認しましょう。
 
-.. figure:: /images/learn/quickstart/export_import/Excel一括インポート確認2.png
+.. figure:: /images/learn/quickstart/export_import/Excel一括インポート確認3.gif
    :width: 1200px
    :alt: Excel一括インポート確認
 
