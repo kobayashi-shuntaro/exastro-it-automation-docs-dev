@@ -121,8 +121,6 @@ Exastro on Docker Compose - Offline
      - バージョン	9.2
    * - AlmaLinux
      - バージョン	8.9
-   * - Ubuntu
-     - バージョン	22.04
 
 - 動作確認済みコンテナプラットフォーム
 
