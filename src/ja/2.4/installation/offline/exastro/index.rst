@@ -12,7 +12,6 @@ Exastro
 
    .. kubernetes
    
-   
    docker_compose
 
 .. raw:: html

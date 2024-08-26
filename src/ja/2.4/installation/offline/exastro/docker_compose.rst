@@ -120,7 +120,7 @@ Exastro on Docker Compose - Offline
    * - Red Hat Enterprise Linux
      - バージョン	9.2
    * - AlmaLinux
-     - バージョン	8.9
+     - バージョン	8.9 
 
 - 動作確認済みコンテナプラットフォーム
 
