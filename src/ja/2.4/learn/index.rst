@@ -11,6 +11,6 @@ Learn
    ansible_legacy_role/index
    oase/index
    collection/index
-   paramater/index
+   parameter/index
 ..   export_import/index
 ..   terraform/index
