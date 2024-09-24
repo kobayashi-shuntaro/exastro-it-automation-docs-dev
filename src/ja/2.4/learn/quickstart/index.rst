@@ -6,7 +6,7 @@
 | 本シナリオでは、簡単な例として、ホスト名の変更を題材に Exastro IT Automation の基本操作を学習します。
 | また、本シナリオを通して、Exastro IT Automation により自動化の最大のメリットを理解することを目的としています。
 
-| 今回の題材では、作業を実行するために以下の事前準備を行います。
+| 今回の題材では、作業を実行するために以下の準備が必要となります。
 
 - :ref:`事前準備 <quickstart_prepared>`
 
@@ -36,7 +36,7 @@
 前提
 ====
 
-| 本シナリオを実行するために必要となる条件は、下記の通りです。
+| 本シナリオを操作するに必要となる条件は、下記の通りです。
 
 1. 作業可能なサーバ(RHEL8)がある。
 2. 利用するユーザはsshでログイン可能で、sudoer で全操作権限を持っている必要があります。
@@ -59,8 +59,8 @@
 
 .. _quickstart_server_information_parmeter:
 
-パラメータシート作成
---------------------
+パラメータシートの作成
+----------------------
 
 | :menuselection:`パラメータシート作成` では、作業時に利用する設定値(パラメータ)を登録するためのパラメータシートを管理します。
 
@@ -84,7 +84,7 @@
      - 項目3設定値
      - 項目4設定値
    * - 項目の名前
-     - :kbd:`ファイルのパス`
+     - :kbd:`ファイル名`
      - :kbd:`旧ホスト名`
      - :kbd:`新ホスト名`
      - :kbd:`ステータス`
@@ -163,6 +163,7 @@
 --------------
 
 | 作業手順を登録するために、Exastro IT Automation で扱う作業単位である Movement (ジョブ)を定義します。
+| 定義した Movement に対して、Ansible Playbook を紐付け、更に Ansible Playbook 内の変数と :ref:`quickstart_server_information_parmeter` で登録したパラメータシートの項目の紐付けを行います。
 
 .. glossary:: Movement
    Exastro IT Automation における、最小の作業単位のことを指します。
@@ -232,8 +233,6 @@ Ansible Playbook 登録
 Movement と Ansible Playbook の紐付け
 -------------------------------------
 
-| 定義した Movement に対して、Ansible Playbook を紐付け、更に Ansible Playbook 内の変数と :ref:`quickstart_server_information_parmeter` で登録したパラメータシートの項目の紐付けを行います。
-
 | :menuselection:`Ansible-Legacy --> Movement-ロール紐付` から、Movement と Ansible Playbook の紐付けを行います。
 | 本シナリオでは、 ~[Exastro standard] Text line operation を利用します。
 
@@ -257,7 +256,7 @@ Movement と Ansible Playbook の紐付け
 パラメータシートの項目と Ansible Playbook の変数の紐付け
 --------------------------------------------------------
 
-| Files_lineinfile.ymlでは、:kbd:`ITA_DFLT_file_path` という変数にホスト名ファイルのパス、:kbd:`ITA_DFLT_regexp` という変数に旧ホスト名、:kbd:`ITA_DFLT_line_string` という変数に新ホスト名、:kbd:`ITA_DFLT_line_state` という変数にstateのオプションをそれぞれ代入することで、対象サーバーのホスト名を設定することができます。
+| Files_lineinfile.ymlでは、:kbd:`ITA_DFLT_file_path` という変数にホスト名のファイル名、:kbd:`ITA_DFLT_regexp` という変数に旧ホスト名、:kbd:`ITA_DFLT_line_string` という変数に新ホスト名、:kbd:`ITA_DFLT_line_state` という変数にstateのオプションをそれぞれ代入することで、対象サーバーのホスト名を設定することができます。
 
 | :menuselection:`Ansible-Legacy --> 代入値自動登録設定` から、サーバー基本情報パラメータシートのホスト名の項目に入るパラメータを、Ansible Playbook の :kbd:`ITA_DFLT_file_path` 、 :kbd:`ITA_DFLT_regexp` 、 :kbd:`ITA_DFLT_line_string` 、 :kbd:`ITA_DFLT_line_state` に代入する設定を行います。
 
@@ -277,7 +276,7 @@ Movement と Ansible Playbook の紐付け
     -
     -
     - Movement名:変数名
-  * - :kbd:`代入値自動登録用:サーバー基本情報:ファイルのパス`
+  * - :kbd:`代入値自動登録用:サーバー基本情報:ファイル名`
     - :kbd:`Value型`
     - :kbd:`ホスト名設定`
     - :kbd:`ホスト名設定:ITA_DFLT_file_path`
@@ -416,7 +415,7 @@ Movement と Ansible Playbook の紐付け
     - 
   * - 
     - オペレーション名
-    - ファイルのパス
+    - ファイル名
     - 旧ホスト名
     - 新ホスト名
     - ステータス
@@ -476,18 +475,10 @@ Movement と Ansible Playbook の紐付け
 
       server01
 
-<<<<<<< HEAD
-ホスト名変更作業実施(2回目)
-===========================
-
-作業概要の作成
---------------
-=======
 .. _quickstart_2nd:
 
 繰り返し作業(2回目)
 ===================
->>>>>>> 4b2cfa646774402eab30deb7f5700afa4388b4e5
 
 | 具体的なパラメータの設定や作業手順を考える前に、作業計画を立てるところから初めます。
 | まずは、いつ、どこの機器に対して、何を、どうするかといった情報を簡単に整理しておきましょう。
@@ -533,11 +524,8 @@ Movement と Ansible Playbook の紐付け
    | 作業実施日時は、本シナリオでは適当な日時で問題ありませんが、作業日が定まっている場合は、正確な作業実施の予定日時を設定することを推奨します。
    | 定期作業などの繰り返し行われる作業のように、作業日が定まっていない場合は現在の日時を登録しても問題ありません。
 
-<<<<<<< HEAD
-=======
 .. _quickstart_2nd_regist_parameter:
 
->>>>>>> 4b2cfa646774402eab30deb7f5700afa4388b4e5
 パラメータ設定
 --------------
 
@@ -564,7 +552,7 @@ Movement と Ansible Playbook の紐付け
     - 
   * - 
     - オペレーション名
-    - ファイルのパス
+    - ファイル名
     - 旧ホスト名
     - 新ホスト名
     - ステータス
@@ -573,18 +561,13 @@ Movement と Ansible Playbook の紐付け
     - :kbd:`/etc/hostname`
     - :kbd:`'.*'`
     - :kbd:`"{{ __inventory_hostname__ }}"`
-<<<<<<< HEAD
     - :kbd:`present`
 
 機器情報の更新
 --------------
 
-| 作業対象となるサーバーのホスト名を db01 に変更します。
-=======
-
 | `__inventory_hostname__` 変数を使うことで、機器一覧に登録したホスト情報を参照できるようになりました。
 | 次に、作業対象となるサーバーのホスト名を db01 に変更します。
->>>>>>> 4b2cfa646774402eab30deb7f5700afa4388b4e5
 
 | :menuselection:`Ansible共通 --> 機器一覧` から、作業対象サーバのホスト名を db01 に更新します。
 
@@ -621,11 +604,8 @@ Movement と Ansible Playbook の紐付け
      - :kbd:`(秘密鍵ファイル)`
      - :kbd:`鍵認証(パスフレーズなし)`
 
-<<<<<<< HEAD
-=======
 .. _quickstart_2nd_run:
 
->>>>>>> 4b2cfa646774402eab30deb7f5700afa4388b4e5
 作業実行
 --------
 
